@@ -21,11 +21,11 @@ app.use(bodyParser.json());
 app.post("/", function (req, res){
     addEmailToMailchimp(req.body.email, req.body.f, req.body.l);
     console.log(req.body.email);
-    if(res.statusCode === 200){
-        res.sendFile(__dirname + "/success.html")
-    } else {
+    // if(res.statusCode === 200){
+    //     res.sendFile(__dirname + "/success.html")
+    // } else {
         res.sendFile(__dirname + "/failure.html")
-    }
+    // }
 });
 
 app.post("/failure", function (req, res){
