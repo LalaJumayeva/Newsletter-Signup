@@ -1,0 +1,61 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*background-color: azure;*/
+}
+
+.form-signin {
+    position: relative;
+    margin: 5%;
+    max-width: 330px;
+    padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.top{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.bottom {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.middle {
+border-radius: 0;
+}
+
+.mb-4 {
+    width: 45%;
+}
+
+.btn {
+    margin-top: 5%;
+    background-color: darkcyan;
+    border-color: darkcyan;
+}
+
+.btn:hover {
+background-color: teal;
+    border-color: teal;
+
+}
+
+.background {
+    position: fixed;
+    max-width: 100%;
+    min-height: 100%;
+}
