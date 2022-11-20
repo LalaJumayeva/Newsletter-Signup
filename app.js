@@ -19,20 +19,7 @@ app.use(bodyParser.json());
 
 
 app.post("/", function (req, res){
-    addEmailToMailchimp(req.body.email, req.body.f, req.body.l);
-    console.log(req.body.email);
-    // if(res.statusCode === 200){
-    //     res.sendFile(__dirname + "/success.html")
-    // } else {
-        res.sendFile(__dirname + "/failure.html")
-    // }
-});
 
-app.post("/failure", function (req, res){
-   res.redirect("/")
-});
-
-function addEmailToMailchimp(email, firstName, lastName){
     const request = require('request');
 
     const options = {
@@ -42,18 +29,30 @@ function addEmailToMailchimp(email, firstName, lastName){
             'Content-Type': 'application/json',
             Authorization: 'Basic aGVsbG86YWQ4MDU0MTJhZGMzMGZjNGNkNWQ5ODMwNTBmZDUwZTctdXMxMg=='
         },
-        body: {email_address: email, status: 'subscribed', FNAME: firstName,
-            LNAME: lastName},
+        body: {email_address: req.body.email, status: 'subscribed', FNAME: req.body.f,
+            LNAME: req.body.l},
         json: true
     };
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
+        
 
+        if(response.statusCode === 200){
+            res.sendFile(__dirname + "/success.html")
+        } else {
+            res.sendFile(__dirname + "/failure.html")
+        }
         console.log(body);
+ 
     });
 
-}
+  
+});
+
+app.post("/failure", function (req, res){
+   res.redirect("/")
+});
 
 
 
